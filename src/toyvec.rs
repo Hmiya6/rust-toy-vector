@@ -1,3 +1,6 @@
+
+use crate::ToyIter;
+
 pub struct ToyVec<T> {
     elements: Box<[T]>,
     len: usize,
@@ -83,7 +86,10 @@ impl<T: Default> ToyVec<T> {
             Some(elem)
         }
     }
-
+    
+    pub fn iter(&self) -> ToyIter<T> {
+        ToyIter::from_toyvec(&self.elements, self.len)
+    }
 }
 
 
